@@ -1,0 +1,30 @@
+/*Selector por classe*/
+.center{
+    text-align: center;
+    color: brown;
+    font-size: 100px;
+}
+
+/*Exemplo Selector baseado em combinador */
+div > p{
+    background-color: yellowgreen;  
+}
+
+/*Exemplos para links */
+/*Link não visitado */
+a:link{
+    color: aliceblue;
+}
+/*Visitado*/
+a:visited{
+    color: brown;
+}
+/*Mouse over no link*/
+a:hover{
+    color: aquamarine;
+}
+/*link selecionado*/
+a:active{
+    color: bisque;
+}
+
