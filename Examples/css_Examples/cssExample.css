@@ -28,3 +28,10 @@ a:active{
     color: bisque;
 }
 
+.container{
+    color: red;
+    border: 10px solid blue;
+}
+.inherit{color: inherit;border: inherit;}
+.initial{color: initial;border: initial;}
+.unset{color: unset;border: unset;}

@@ -1,0 +1,53 @@
+### Manipulação Básica: ###
+->Criar um array:
+# countries [3] = {"Portugal","Espanha",França"};
+# cosole.log(countries);
+
+Operações especiais:
+push                            - adiciona elementos no final do array
+pop                             - remove elementos do final do array
+shift                           - remove o primeiro elento do array
+unshift                         - adiciona um elemento ao inicio do array
+delete                          - remove elementos do array mas pode deixar buracos, aconselha se o splice
+splice(pos,delCount,..items)    - remove elementos de um posição até outra posição
+slice(start,end)                -cria um novo array e copia os elementos do inicio até ao fim
+concat                          - Junta ao array novos items
+
+# countries.push("Itália");
+# countries.unshift("Croácia");
+# let firstCountry = countries.shift()
+# countries.splice(1,1);
+# countries.concat(otherCountries);
+
+->Ciclos FOR
+Serve par aiterar todos os elemntos do array
+Clássico
+# for(let i = 0; i<countries; i++){};
+For of
+# for(const country of countries){};
+For in
+# for(let key in countries){};
+
+->FOR EACH
+Permite a apresentação completa de todo o array
+# countries.forEach((item, index,array) => {
+#     alert(`${item} está na posição${index} no array ${array}`)
+# });
+
+->Ordenação
+Método sort faz um ordenação lexicográfica, assum os valores como Strings
+countries.sort();
+Reverter a ordem
+countries.reverse();
+
+Para ordenar números usar método com comparação
+# function ascOrder(a,b){
+#    return a-b;}
+# let grades = [12,3,1,45];
+# grades.sort(ascOrder); //1,3,12,45
+Quando o método sort compara dois valores , envia-os á função de comparação 
+e ordena-os de acordo com o valor retomado(negativo,zero,positivo)
+Versão compacta:
+# grades.sort((a,b) => a-b) 
+
+
