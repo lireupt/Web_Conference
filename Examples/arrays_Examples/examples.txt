@@ -12,13 +12,14 @@ delete                          - remove elementos do array mas pode deixar bura
 splice(pos,delCount,..items)    - remove elementos de um posição até outra posição
 slice(start,end)                -cria um novo array e copia os elementos do inicio até ao fim
 concat                          - Junta ao array novos items
+spread (...)                    - Concatenação usa a sintaxe 3 pontos
 
 # countries.push("Itália");
 # countries.unshift("Croácia");
 # let firstCountry = countries.shift()
 # countries.splice(1,1);
 # countries.concat(otherCountries);
-
+# (...countries,"Suiça");
 ->Ciclos FOR
 Serve par aiterar todos os elemntos do array
 Clássico
@@ -50,4 +51,5 @@ e ordena-os de acordo com o valor retomado(negativo,zero,positivo)
 Versão compacta:
 # grades.sort((a,b) => a-b) 
 
+-> Pesquisa de elementos num array
 
