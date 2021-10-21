@@ -1,0 +1,49 @@
+*** Os objetos são usados para armazenar coleções de dados complexas ***
+
+-> Em Js podem ser inicializados utilizando:
+new Object();
+Object.create();
+
+-> Criação de objetos vazios
+let user = {} //notação literal do objeto
+let user = new Object(); //notação do construtor
+
+-> Notação literal possibilita a criação rápida de objetos:
+let person ={
+    name:"Helder",
+    age = 36}
+
+-> Propriedades: permite armazenar pares de chave:valor
+let name = "Helder"
+let age = 36
+let person = {name, age} //a partir do ES2015 já permite criar obj a partir de variáveis
+
+#Obter valor de um Propriedades
+console.log(person.name)//Helder
+
+#Alterar valor de uma variavel
+person.name = "Helder Oliveira"
+console.log(person.name)//Helder Oliveira
+
+#Entrada de dados do prompt
+let person ={
+    name:"Helder",
+    age = 36}
+let key = prompt("o que deseja saber desta pessoa?", "name");
+console.log(user[key]) //36 se o user escolher age
+
+#delete propriedade
+delete.person(age)
+console.log(person.age)//Helder
+
+#percorrer todas as chaves do objeto
+let person ={
+    name:"Helder",
+    age = 36}
+for(key in person){
+    alert(key) //name age
+    alert(person[key])//Helder, 36
+}
+
+O cilco for..of só funciona com iteráveis, objetos simples não são iteraveis
+
