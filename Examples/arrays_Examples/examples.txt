@@ -6,13 +6,13 @@
 Operações especiais:
 push                            - adiciona elementos no final do array
 pop                             - remove elementos do final do array
-shift                           - remove o primeiro elento do array
+shift                           - remove o primeiro elemento do array
 unshift                         - adiciona um elemento ao inicio do array
 delete                          - remove elementos do array mas pode deixar buracos, aconselha se o splice
 splice(pos,delCount,..items)    - remove elementos de um posição até outra posição
-slice(start,end)                -cria um novo array e copia os elementos do inicio até ao fim
-concat                          - Junta ao array novos items
-spread (...)                    - Concatenação usa a sintaxe 3 pontos
+slice(start,end)                - cria um novo array e copia os elementos do inicio até ao fim
+concat                          - junta ao array novos items
+spread (...)                    - concatenação usa a sintaxe 3 pontos
 
 # countries.push("Itália");
 # countries.unshift("Croácia");
@@ -22,7 +22,7 @@ spread (...)                    - Concatenação usa a sintaxe 3 pontos
 # (...countries,"Suiça");
 
 ->Ciclos FOR
-Serve par aiterar todos os elementos do array
+Serve para iterar todos os elementos do array
 Clássico
 # for(let i = 0; i<countries; i++){};
 For of
@@ -53,11 +53,11 @@ Versão compacta:
 # grades.sort((a,b) => a-b) 
 
 -> Pesquisa de elementos num array
-indexOf/lastaIndexOf(item, pos)     -procura por item no array a partir da posição  
-includes(value)                     -se o array tiver o value retoma true, senão false
-find/filter(func)                   -filtra elementos através da finção func e retoma o primeiro ou 
+indexOf/lastaIndexOf(item, pos)     - procura por item no array a partir da posição  
+includes(value)                     - se o array tiver o value retoma true, senão false
+find/filter(func)                   - filtra elementos através da finção func e retoma o primeiro ou 
                                         todos valores do array que fazem a função retomar true
-filterIndex                         -similar ao anterior
+filterIndex                         - similar ao anterior
 
 includes
 #let countries =[ "Portugal", "Espanha", "França"];
@@ -76,11 +76,11 @@ const result = countries.filter(country => country.lenght > 6)
 console.log(result) //Portugal, Espanha
 
 ->Enumera os principais métodos de transformação de arrays
-map(func)                       -executa a função func para cada elemento do array e retorna um novo array com os resultados
-fill(value, start, end)         -preenche todos os elementos do array da posição start até end com o value e altera o array original
-sort(func)                      -ordena o array através da funcao func dada e retorna-o
-reverse()                       -inverte o array e retorna-o
-join([separator])               -une os elementos numa String e retorna-aconselha
+map(func)                       - executa a função func para cada elemento do array e retorna um novo array com os resultados
+fill(value, start, end)         - preenche todos os elementos do array da posição start até end com o value e altera o array original
+sort(func)                      - ordena o array através da funcao func dada e retorna-o
+reverse()                       - inverte o array e retorna-o
+join([separator])               - une os elementos numa String e retorna-aconselha
 reduce(func, initialValue)      - aplica a função func contra acumulador e a cada elemento no array, para reduzir a um unico valor
 
 map - transforma o primeiro caracter dos países em lower case
@@ -95,10 +95,10 @@ reduce - arr.reduce(
     function(acumulator,currentitem,index,arr){.....}, initial
 )
 *function(função) pode ter quatro subparâmetros
-    -acumulator : é o resultado da chamada da função anterior
-    -currentitem: é o item atual do array
-    -index: é a sua posição
-    -arr: é o proprio array
+    - acumulator : é o resultado da chamada da função anterior
+    - currentitem: é o item atual do array
+    - index: é a sua posição
+    - arr: é o proprio array
 *initial: é o valor a ser usado como primeiro chamada da função, se nenhum valor inicial for fornecido, será usado o primeiro elemento do array
 
 Exemplo:
@@ -107,8 +107,8 @@ usar dois parametros e develver a soma de todos os elementos do array
 #let result = arr.reduce((sum,current) => sum + current, 0)
 #console.log(result) //15
 
--na primeira execução, sum é o valor inicial(ultimo argumento de reduce), igual a 0, e current é o primeiro elemento do array (1), logo o resultado é 1
--na segunda execução(sum=1), adicionameos o segundo elemnto (2 e retornamos), resultado (3)
+- na primeira execução, sum é o valor inicial(ultimo argumento de reduce), igual a 0, e current é o primeiro elemento do array (1), logo o resultado é 1
+- na segunda execução(sum=1), adicionameos o segundo elemnto (2 e retornamos), resultado (3)
 - assim sucessivamente...
 
 
