@@ -47,3 +47,72 @@ for(key in person){
 
 O cilco for..of só funciona com iteráveis, objetos simples não são iteraveis
 
+-> Métodos : ações são representadas por funções em propriedades
+let person ={
+    name:"Helder",
+    age = 36,
+    sayHello(){
+        alert(`O meu nome é ${this.name}!`)
+    }
+}// O meu nome é Helder!
+Para criar um método num obj literal é utilizada a sintaxe similar á função, 
+dispensável da palavra chave function
+
+-> Cópia de objetos: objetos são atribuidos e copiados por referência, por outras palavras uma variável
+armazena nao o conteúdo mas sim uma referência(endereço de memória)
+
+let person ={name:"Helder",age = 36}
+let newPerson = person;
+newPerson.name = "João";
+console.log(person.name)//Maria - a alteração foi feita tbm no obj principal
+
+clone: cria um nov objeto, clone através de iteração do obj principal e alimentar o segundo obj
+let person ={name:"Helder",age = 36}
+let newPerson ={} //obj vazios
+//copia todas as referências para o novo obj
+for(key in person){
+    newPerson[key] = person[key]
+}
+newPerson.name= "João"
+console.log(person.name) //Helder - agora mantem os mesmos dados no obj original
+
+-> Classes 
+
+#Construtor:melhor solução para criar múltiplos objetos similares, 
+tal ação pode ser feita com construtor e operador 'new'
+//função contrutora
+function Person(name, age){
+    this.name= name
+    this.age = ag
+let myFriend = new Person("Luis", 35);
+
+#Sintaxe classe: classes encapsulam abstrações de dados e procedimentos que descrevem
+o conteúdo e comportamento de entidades do mundo real
+
+class myClass{
+    //variables
+    constructor()
+    get proprety(...) {}
+    set property(...) {}
+    static methods(..){}
+}
+
+Example: comparar datas de nascimento e alinhar por ordem 
+class Person{
+    Person(name, birthDate){
+        this.name = name;
+        this.birthDate=  birthDate;
+    }
+    static compare(personA, personB){
+        return personA.birthDate - personB.birthDate;
+    }
+}
+
+//Array com vários valores
+let persons = [
+    new Person = ("Maria", newDate(1978,06,15)),
+    new Person = ("João", newDate(1987,02,5)),
+    new Person = ("Helder", newDate(1984,12,29)),
+]
+persons.sort(Person.compare)
+console.log(persons[0].name) //Maria
