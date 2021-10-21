@@ -20,8 +20,9 @@ spread (...)                    - Concatenação usa a sintaxe 3 pontos
 # countries.splice(1,1);
 # countries.concat(otherCountries);
 # (...countries,"Suiça");
+
 ->Ciclos FOR
-Serve par aiterar todos os elemntos do array
+Serve par aiterar todos os elementos do array
 Clássico
 # for(let i = 0; i<countries; i++){};
 For of
@@ -52,4 +53,65 @@ Versão compacta:
 # grades.sort((a,b) => a-b) 
 
 -> Pesquisa de elementos num array
+indexOf/lastaIndexOf(item, pos)     -procura por item no array a partir da posição  
+includes(value)                     -se o array tiver o value retoma true, senão false
+find/filter(func)                   -filtra elementos através da finção func e retoma o primeiro ou 
+                                        todos valores do array que fazem a função retomar true
+filterIndex                         -similar ao anterior
+
+includes
+#let countries =[ "Portugal", "Espanha", "França"];
+#if(countries.includes("Portugal")){
+#    console.log("Portugal está na lista");}
+
+filter - cria um novo array com todos os elementos que passam no teste da função fornecida 
+#let countries =[ "Portugal", "Espanha", "França"];
+#function isBigEnough(country){
+#    return country.lenght > 6}
+#const result = countries.filter(isBigEnough)
+#console.log(result) //Portugal, Espanha -> tem mais do 6 caracteres de tamanho
+
+usando a função arrow
+const result = countries.filter(country => country.lenght > 6)
+console.log(result) //Portugal, Espanha
+
+->Enumera os principais métodos de transformação de arrays
+map(func)                       -executa a função func para cada elemento do array e retorna um novo array com os resultados
+fill(value, start, end)         -preenche todos os elementos do array da posição start até end com o value e altera o array original
+sort(func)                      -ordena o array através da funcao func dada e retorna-o
+reverse()                       -inverte o array e retorna-o
+join([separator])               -une os elementos numa String e retorna-aconselha
+reduce(func, initialValue)      - aplica a função func contra acumulador e a cada elemento no array, para reduzir a um unico valor
+
+map - transforma o primeiro caracter dos países em lower case
+#let newCountries = countries.map(x=> x=[0].toLowerCase() + x.slice(1))
+#console.log(newCountries); //portugal,espanha,França
+
+join- produz todos os país separados por hífen
+#let newCountries = countries.join("-");
+#console.log(newCountries); //Portugal-Espanha-França
+
+reduce - arr.reduce(
+    function(acumulator,currentitem,index,arr){.....}, initial
+)
+*function(função) pode ter quatro subparâmetros
+    -acumulator : é o resultado da chamada da função anterior
+    -currentitem: é o item atual do array
+    -index: é a sua posição
+    -arr: é o proprio array
+*initial: é o valor a ser usado como primeiro chamada da função, se nenhum valor inicial for fornecido, será usado o primeiro elemento do array
+
+Exemplo:
+usar dois parametros e develver a soma de todos os elementos do array
+#let arr = [1,2,3,4,5]
+#let result = arr.reduce((sum,current) => sum + current, 0)
+#console.log(result) //15
+
+-na primeira execução, sum é o valor inicial(ultimo argumento de reduce), igual a 0, e current é o primeiro elemento do array (1), logo o resultado é 1
+-na segunda execução(sum=1), adicionameos o segundo elemnto (2 e retornamos), resultado (3)
+- assim sucessivamente...
+
+
+
+
 
