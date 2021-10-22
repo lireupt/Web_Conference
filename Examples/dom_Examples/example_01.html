@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+     <script src="Examples\dom_Examples\example_01.js"></script>   
+    <title>Document</title>
+</head>
+<body>
+
+    <!--Exemplo 1 -->
+    <p>Antes do script</p>
+    <!--integração d script localmente -->
+    <script >alert("Olá Mundo do github!")</script>
+    <p>Depois do script</p>
+
+    <!--Exemplo 2 -->
+    <p id="hello">Olá, Mundo!</p>
+    <p>um segundo parágrafo</p>
+    
+    <script>let myElement=document.getElementById("hello")
+        alert(`O texto do primeiro parágrafo é ${myElement.innerHTML}`)
+    </script>
+
+    <!--Exemplo 3 -->
+    <p class="hello">Olá Mundo!</p>
+    <p class="hello">Estou aqui!</p>
+    <p>Um terceiro parágrafo</p>
+
+    <script>let myElements=document.querySelectorAll("p.hello")
+        alert(`O total de parágrafos em p é ${myElements.length}`)
+    </script>
+    
+    <!--Exemplo 4 -->
+
+    <div id="myDiv">
+        <p>1- Um primeiro parágrafo</p>
+        <p>2- Um segundo parágrafo</p>
+    </div>
+
+    <script>
+        let paragraph = document.createElement("p") //Gera um novo paragáfo através do método create element
+        let textNode = document.createTextNode("3- Terceiro parágrafo") // para adicionar texto ao p é criado um nó de texto
+        paragraph.appendChild(textNode) //anexa o nó de texto ao p através do appendchild
+        let element2 = document.getElementById("myDiv")//busca a div para inserir o elemento
+        element2.appendChild(paragraph)//insere-se o elemento na div
+    </script>
+
+    <!--Exemplo 5 -->
+
+    <p id="myP">1 parágrafo</p>
+    <img id="img" src="house.jpg" alt="Casa">
+    <script>
+        document.getElementById("myP").innerHTML = "Novamente o parágrafo"
+        document.getElementById("img").alt = "new House"
+    </script>
+
+    <!--Exemplo 6 -->
+    <h1 id="nP">Verde será a  cor do parágrafo</h1>
+    <script>
+        document.getElementById("nP").style.color ="green"
+    </script>
+
+</body>
+</html>

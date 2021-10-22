@@ -1,0 +1,69 @@
+*** Trabalhar com o DOM (Document Object Model) ***
+
+Quando a página é carregada, o navegador cria um DOM da mesma e construido na base de uma árvore de objetos.
+A partir da API DOM é possivel manipular a estrutura de objetos.
+
+O obj document representa o documento HTML como um todo.
+Podemos métodos obter os diferentes tipos.
+
+-> Métodos de acesso/busca a elementos do documento HTML
+getElementById(id)          - obtém uma referência para um elemento HTML a partir do atributo id
+getElementByTagName(name)   - obtém uma referência para um elemento HTML a partir do nome da tag
+getElementByClassName       - obtém uma referência para um elemento HTML a partir do nome da classe
+querySelector               - obtém uma referência para um elemento HTML a partir do selector do CSS
+querySelectorAll            - obtém uma referência para um conjunto de elementos HTML a partir do selector do CSS
+
+#getElemntsById- busca por id
+<p id="hello">Olá, Mundo!</p>
+<p>um seguno parágrafo</p>
+<script>let myElement=document.getElementById("hello")
+    alert(`O texto do primeiro parágrafo é {$myElement.innerHTML}`)
+</script>//Olá, Mundo!
+
+#querySelectorAll- conjunto de elementos
+<p class="hello">Olá Mundo!</p>
+<p class="hello">Estou aqui!</p>
+<p>Um terceiro parágrafo</p>
+<script>let myElements=document.querySelectorAll("p.hello")
+        alert(`O total de parágrafos em p é ${myElements.length}`)
+</script>
+
+-> Métodos de adicionar/remover elementos do documento HTML
+createElement(element)      -cria um elemento HTML
+createTextNode              -cria um nó do tipo texto
+removeChild(element)        -remove um elemento HTML
+appendChild(element)        -adiciona um elemento HTML
+replaceChild(element)       -substitui um elemento HTML
+
+#exemplos de aplicação dos métodos
+<div id="myDiv">
+<p>1- Um primeiro parágrafo</p>
+<p>2- Um segundo parágrafo</p>
+</div>
+<script>
+    let paragraph = document.createElement("p")                         //Gera um novo paragáfo através do método create element
+    let textNode = document.createTextNode("3- Terceiro parágrafo")     // para adicionar texto ao p é criado um nó de texto
+    paragraph.appendChild(textNode)                                     //anexa o nó de texto ao p através do appendchild
+    let element2 = document.getElementById("myDiv")                     //busca a div para inserir o elemento
+    element2.appendChild(paragraph)                                     //insere-se o elemento na div
+</script>
+
+-> Alterar o HTML DOM através do JS
+A forma mais fácil de o fazer é utilizar a propriedade do innerHTML
+document.getElementById(id).innerHTML = "novo conteúdo
+
+Pode-se também alterar o valor do atributo
+document.getElementById(id).attribute = "novo valor"
+
+#exemplo
+<p id="myP">1 parágrafo</p>                                             //cria um parágrafo
+<img id="img" src="house.jpg" alt="Casa">                               //cria uma imagem
+<script>
+    document.getElementById("myP").innerHTML = "Novamente o parágrafo"  //altera o conteudo do parágrafo
+     document.getElementById("img").alt = "new House"                   //altera a descrição da imagem através do atributo
+</script>
+
+-> Alterar um estilo através do método setAttribute(attribute, value)
+todos os elementos do DOM tem propriedade sytle e podem ser alterados
+document.getElementById(id).sytle.proprety = "novo estilo"
+
