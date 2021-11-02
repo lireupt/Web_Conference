@@ -67,3 +67,127 @@ document.getElementById(id).attribute = "novo valor"
 todos os elementos do DOM tem propriedade sytle e podem ser alterados
 document.getElementById(id).sytle.proprety = "novo estilo"
 
+-> Navegabilidade
+Os nós do DOM tem uma relação hierárquica entre si.
+Pais -> filhos -> irmãos
+
+#exemplo - childNodes
+<div id="myDiv">
+<p>Primeiro parágrafo</p>
+<p>Segundo paragáfo</p>
+</div>
+<h4 id="result"></h4>
+<script>
+    let paragraphs= document.getElementById("myDiv").childNodes         //obtém referência sobre os child nodes
+    let numParagraphs = paragraphs.length                               //tamanho da referência
+    let txt=" "                                                         //variável vazia para receber o tamanho
+    for(let i=0; i < numParagraphs; i++){                               //itera a referência de childNodes
+        txt+= paragraphs[i].innerHTML                                   //calcula a referência
+    } 
+    document.getElementById("result").innerHTML = `Paragrafos : ${txt}` //apresenta na referência result do DOM
+</script>
+
+-> Eventos
+
+Um modelo de programação por eventos é rativo, já que a execução se inicia em resposta a um evento. Este evento é materalizado em um objeto e passado a uma função.
+O registo de processamento de eventos é composto por 3 partes:
+- elemento que recebe o evento;
+- o tipo de evento a processar;
+- função callBack que é executada em resposta
+
+Modos de registo de eventos:
+@ atributos de elementos no HTML
+@ propriedades de elementos DOM no JS
+@ funções nos elementos DOM no JS
+
+# atributos de elementos no HTML : contem um atributo para receber um evento, cujo o nome indica o tipo de evento a ser processado
+<p>Clique no botão</p>
+<button onclick = "displayDate()">Qual a data atual ?</button>
+<p id="result"> </p>
+<script>
+    function displayDate(){
+        document.getElementById("result").innerHTML = new Date();
+    }
+</script> // Data actual do PC
+
+# propriedades de elementos DOM no JS : exemplo igual ao anterior, porem separa o o HTML do JS, sendo esta a melhor prática
+Os atributos de eventos do HTML são utilizados como propriedades, neste caso a propriedade onclick é agregada à referênciado botão.
+//Ficheiro HTML
+<p button id="myButton">Qual a data atual? </p>
+<p id="result"></p>
+
+//Ficheiro JS
+window.onload = function(){
+    let button = document.getElementById("myButton)
+    let result = document.getElementById ("result")
+    button.onclick=function(){
+        result.innerHTML = new Date();
+    }
+}
+
+#funções nos elementos DOM no JS : último modo de registo usa a função nos elementos DOM no JS.
+A função é designada por addEventListener e permite registar callbacks em elementos DOM.
+
+Sintaxe: elemento.addEventListener(event, function, useCapture)
+
+@ event: string com tipo de evento(sem prefixo on)
+@ function: função callback executada em resposta ao evento
+@ useCapture: é o valor booleano que indica como é feita a propagação do evento:
+    -false : evento interno é tratado primeiro e o externo depois
+    -true : evento externo tratado primeiro e o interno depois
+
+#Exemplo:
+//Ficheiro HTML
+<div id="Mydiv">
+    <button id="myButt"> Clica me!!</button>
+</div>
+
+//Ficheiro JS
+<script>
+    Document.getElementById("Mydiv").addEventListener(
+        "click",
+        function(){
+            //Função 1
+        }
+    )
+  Document.getElementById("myButt").addEventListener(
+        "click",
+        function(){
+            //Função 2
+        }
+    )   
+</script>
+
+Como não foi definido o useCapture, o elemento mais interno será tratado primeiro, ou seja a função 2.
+O eventos contêm informação e a sua propagação deve ser controlada.É obtida através da inspeção de eventos, passado como parâmetro.
+
+@ buble : propriedade lógica que indica se o evento está em fase de bubbling
+@ stopPropagation : é um método que impede a propagação
+@ preventDefault : método que cancela qualquer ação standart, feita geralmente pela aplicação como resultado do evento
+
+#Exemplo:
+//Ficheiro HTML
+<form id="myForm">
+    <input type="submit" value="login"
+</form>
+
+//Ficheiro JS
+...
+    document.getElementById("myForm").addEventListener(
+        "submit",
+        function(event){
+            //Função 1
+            Alert("O formulário não vai ser submetido!")
+            event.preventDefault()
+        }
+    )
+
+Esta aboradgem permite registar vários callbacks para o mesmo elemento.
+#Exemplo:
+let myBtn = document.getElementById("myButton")
+myBtn.addEventListener("click", myFunction1)
+myBtn.addEventListener("mouseout", myFunction2)
+
+->Tipos de Eventos
+
+

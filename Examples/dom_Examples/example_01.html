@@ -61,5 +61,36 @@
         document.getElementById("nP").style.color ="green"
     </script>
 
+    <!--Exemplo 7 -->
+    <div id="myDivi">
+        <p>Primeiro parágrafo</p>
+        <p>Segundo paragáfo</p>
+    </div>
+    <h4 id="result"></h4>
+    <script>
+        let paragraphs= document.getElementById("myDivi").childNodes        //obtém referência sobre os child nodes
+        let numParagraphs = paragraphs.length                               //tamanho da referência
+        let txt=" "                                                         //variável vazia para receber o tamanho
+        for(let i=0; i < numParagraphs; i++){                               //itera a referência de childNodes
+            txt+= paragraphs[i].innerHTML                                   //calcula a referência
+        } 
+        document.getElementById("result").innerHTML = `Parágrafos : ${txt}` //apresenta na referência result do DOM
+    </script>
+
+     <!--Exemplo 8 -->
+    <p>Clique no botão</p>
+    <button onclick = "displayDate()">Qual a data atual ?</button>
+    <p id="result"> </p>
+    <script>
+        function displayDate(){
+            document.getElementById("result").innerHTML = new Date();
+        }
+    </script> 
+
+    <!--Exemplo 9 -->
+
+    <button id="myButtons">2_Qual a data atual? </p>
+    <p id="results"></p>
+
 </body>
 </html>
