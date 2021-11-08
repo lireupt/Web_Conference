@@ -1,0 +1,118 @@
+*** Comunicação Cliente-Servidor ***
+
+O HTTP é o protocolo mais significativo hoje em dia na Internet.
+tem como principal missão conectar-se a um servidor Web pela Internet e tranferir documentos..
+A escolha de um cliente deve ser bem pensada, dados os requisitos das tarfas a desenvolver.
+
+@suporte HTTP/2: permite que todos os pedidos para o mesmo host partilhem sockets
+@pool de conexões: reduz a latência do pedidos
+@compactação de mensagens: o GZIP transparente diminui o tamanho dos downloads
+@cache de resposta: evita pedidos repetidos
+@suporte de linguagens: possibilita o uso do cliente em outros cenários, aumentando a comunidade de programadores
+
+A troca de dados é realizada por um formato standart: XML /JSON
+
+-> JSON
+Formato de fácil integração com o JS, é uma sintaxe para armazenar troca de dados. 
+É do tipo texto, sendo facilmente convertivel para obj em JS.
+O formato JSON é similar á notação de JS, com a exeção dos seguintes pontos:
+@ as chaves devem ser delimitadas por "aspas"
+@os valores JSON podem ser apenas strings, números, arrays, booleanos, null, ou outro obj JSON
+
+#Exemplo:
+let data = {
+    "employee": {
+        "name":"Helder",
+        "idade":36,
+        "region":"Algarve"
+    }
+}
+
+-> Parsing: para receber dados do lado do servidor são sempre em forma de string, para isso é necessário fazer o JSON.parse() para transformar num obj JS:
+#let obj = JSON.parse('{"name":"Helder","idade":36,"region":"Algarve"}')
+#console.log(obj.name)//Helder
+
+->Stringify: para enviar dados para o servidor temos de converter os dados numa string, e para converter num obj JS usamos este método.
+#const obj =  {"name":"Helder","idade":36,"region":"Algarve"}
+#const myJSON = JSON.stringify(obj) 
+
+->Objeto XMLHTTREQUEST (XHR)
+Antigamente as páginas necessitavam de refresh no browser para recarregamento.
+Os pedidos AJAX ( Asynchronous JavaScript and XML) vieram resolver esse problema.
+Desta forma os dados podem ser passados entre navegador e cervidor sem a necessidade de a página ser recarregada.
+
+Os pedidos AJAX são acionados via código JS, e o envio é baseado num URL. Após receber a resposta do servidor, o código executa uma função callback para lidar com a resposta.
+Como o pedido é assincrono, o restante código continua a ser executado enquanto o pedido é processado.
+
+#Exemplo
+...
+<script>
+//Inicializa o obj request
+let xhr = new XMLHTTRequest()
+//Monitoriza as alterações de estado do pedido
+xhr.onreadystatechange = function(){
+    const DONE = 4 // ready state 4 significa que o pedido terminou
+    const OK = 200 // status 200 inidca um retorno com sucesso
+    if(this.readyState === DONE && this.status===OK){
+        //Txto retornado
+        document.getElementById("res").innerHTML = this.responseText
+    }else{
+        //Ocorrencia de erro
+        console.log(`Erro: ${this.status}`)
+    }
+}
+    xhr.open('get','send-ajax-data.php')
+    xhr.send()
+</script>
+....
+<body>
+    <p id="res"></p>
+</body>
+
+Para enviar os pedidos ao servidor são usados os métodos send() e open() do obj XHR
+O status é mantido pela propriedade readyState.
+A propriedade onreadystatechange define a função a ser executa quando o readyState é alterado.
+Por último a propriedade responseText retorna a resposata do servidor como uma string JS 
+
+-> API Fetch
+Esta API tem vindo a substituir o XHR, porém ambas podem trabalhar em conjunto.
+Baseada em obj Promise, que representa uma eventual realização(ou falha) de uma operaçã assíncrona e o valor resultante.
+Fornece o método fetch() definido no obj window, que pode ser usado para realizar pedidos.
+O método fetch apenas um argumento obrigatório, que é o URL.
+
+#Exemplo
+fetch('https://dog.ceo/api/breed/boxer/images/random').then(res=>console.log(res))
+
+A resposta da consola, teve sucesso porém não mostra a imagem do cão, vendo apenas um obj responseText
+
+fetch('https://dog.ceo/api/breed/boxer/images/random')  //Pedido através do fetch
+    .then(res=>console.log(res))                        //Quando a promise é cumprida, retorna um obj expõe um método JSON
+        .then(json=>console.log(json))                  //Porque o o json retorna um um objeto Promise, 
+                                                            temos de encadear outro obj para mostrar na consola
+
+#Exemplo 2
+//HTML
+   <img id="myImg" src=" ">
+//JS
+ //Pedido através do fetch
+
+fetch('https://dog.ceo/api/breed/boxer/images/random') 
+    .then(res=>res.json())                        
+        .then(json=>document.getElementById("myImg").src = json.message)  
+
+-> ASYNCH / AWAIT
+Com a introduação do ES2017, surgiu uma forma mais consica de processar as PROMISES.
+O uso deste novo onceito significa que podemos marcar uma função assíncrona, como async e esperar que a promise esteja concluida com a palavra-chave await,e por fim, acedr ao resultado como um objeto normal.
+
+#Exemplo
+async function fecthByBreed(breed){
+   try{
+       const response = await fetch(`.../api/breed/${breed}/images/random`)
+       const jsonData 0 await response.json()
+       document.getElementById("myImg2").src = jsonData.message
+   } catch(e){
+       alert(e)
+   }
+}
+fecthByBreed('boxer')
+
