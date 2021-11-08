@@ -89,7 +89,7 @@ Pais -> filhos -> irmãos
 
 -> Eventos
 
-Um modelo de programação por eventos é rativo, já que a execução se inicia em resposta a um evento. Este evento é materalizado em um objeto e passado a uma função.
+Um modelo de programação por eventos é reativo, já que a execução se inicia em resposta a um evento. Este evento é materalizado em um objeto e passado a uma função.
 O registo de processamento de eventos é composto por 3 partes:
 - elemento que recebe o evento;
 - o tipo de evento a processar;
@@ -159,7 +159,8 @@ Sintaxe: elemento.addEventListener(event, function, useCapture)
 </script>
 
 Como não foi definido o useCapture, o elemento mais interno será tratado primeiro, ou seja a função 2.
-O eventos contêm informação e a sua propagação deve ser controlada.É obtida através da inspeção de eventos, passado como parâmetro.
+O eventos contêm informação e a sua propagação deve ser controlada.
+É obtida através da inspeção de eventos, passado como parâmetro.
 
 @ buble : propriedade lógica que indica se o evento está em fase de bubbling
 @ stopPropagation : é um método que impede a propagação
@@ -189,5 +190,38 @@ myBtn.addEventListener("click", myFunction1)
 myBtn.addEventListener("mouseout", myFunction2)
 
 ->Tipos de Eventos
+Existem vários tipos de argumentos agrupaveis:
+@janela: controla a janela, o mais utilizado é o load
+    -load, unload, resize, scroll
+@rato: controla o rato o mais utilizado é o click (o event contem informação do x e y ->controlKey)
+    -click, doubleclick,mousedown, mouseup, mousemove
+@teclado: controla o teclado o mais utilizado é o crtlkey
+    -keypress, keydown, keyup
+@widgets: mais utilizado é o submit nos forms
+    -change, focus, select, submit
+
+#Exemplo: formulário com dois campos
+
+//HTML
+ <form id="frm" action="run.php">
+        Password: <input id="pass1" type="password" name="pass1"><br>
+        Confirmar a Password: <input id="pass2" type="password" name="pass2"><br>
+        <input type="submit" value="Submit">
+    </form>
+
+//JS
+
+let frm = document.getElementById("frm")
+frm.addEventListener("submit", function(event){
+    let pass1 = document.getElementById("pass1")
+    console.log(pass1)
+    let pass2 = document.getElementById("pass2")
+    console.log(pass2)
+
+    if(pass1.value != pass2.value){
+        alert("Passwords não coincidem!!")
+        event.preventDefault()
+    }
+})
 
 
