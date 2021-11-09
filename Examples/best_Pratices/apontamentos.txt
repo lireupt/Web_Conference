@@ -1,0 +1,43 @@
+*** Best Pratices ***
+
+1- Incluir scripts JS no fim do elemento <body></body> para que o carregaemnto do site seja mais rápido, pois todo o código HTML/CSS carregará primeiro, e fará com que o user tenha um feedback mais rápido da página.
+
+2- Usar sistematicamente o Chrome Dev Tools, para depuração do código
+
+3- Usar a palavra-chave const sempre que não necessitar de alterar o valor dessa variável, caso contrário usar let e nunca var.
+
+4- Usar por convençã nomes em língua Inglesa.
+
+5- Usar sempre o operador === em vez do ==
+    #Exemplo:
+        let a = 1
+        let b = '1'
+        console.log(a==b) //true
+        console.log(a===b)//false
+
+6- Evitar usar o uso excessivo do operador ternário (condição ? expr1 : expr 2)
+
+7- Os blocos for..in e for..on permitem iterar arrays e strings, contudo não é recomndado o uso do for..in quando é importante garantir que a iteração ocorre em sequência.
+
+8- Usar nomes com prefixos que denotem ações, como o create(criar), show(mostrar), get(obter), ou check(verificar), entre outros, sugere o que faz a função.
+
+9- Usar variáveis locais, invés das globais, permite mais facilmente perceber o código da função, e evita side effects
+
+10- Realizar operações no fim do array, permite acelarar o processo de dados mais rápido do que no inicio, pois em grandes quantidades de dados pode prejudicar a performance da aplicação.
+
+11- Usar a nova construção o ES2015.
+
+12- Optar por criar objectos usando o modo literal em detrimento do uso da palavra chave new e do seu construtor.
+    #Exemplo:
+        Não usar=> let obj = new obj() 
+        USAR =>    let obj = {} 
+13- Tratar sempre String, Number, ou Boolean como tipos primitivos e não como objetos. Declarar as variáveis como objetos reduz a velocidade de execução e pode causar problemas indesejados.
+
+14- Usar o null para escrever o valor vazio ou undefined apenas para verificações, de forma a saber se algum valor foi atribuído a uma variável.
+    #Exemplo:
+        if(typeof myObj !== "undefined" && myObj !== null)
+
+15- Dominar os conceitos de bubbling e capturing da propagação de eventos no DOM.
+
+16- Usar a API Fetch para comunicar com o servidor, combinada com a sintaxe especial asnc/await(ES2017), que é uma forma poderosa mas simples de trabalhar promises.
+
