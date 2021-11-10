@@ -1,0 +1,14 @@
+header.masthead{
+    text-align: center;
+    color: white;
+    background-image: url("../img/conference.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+}
+
+header.intro-text{
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
